@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Word.h"
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
 
     //NSString* file = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"strings"];
-    NSString * file = @"/Users/andreza/workspace/mobile-cs411/mobile-cs411-asgt2/assignment2/words2";
+/*    NSString * file = @"/Users/andreza/workspace/mobile-cs411/mobile-cs411-asgt2/assignment2/words2";
     NSError  * error;
     NSString *fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
     
@@ -21,6 +22,9 @@ int main(int argc, const char * argv[]) {
     for (NSString *line in [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]) {
       NSLog(line);
     }
+*/
+    Word * word = [[Word alloc] initWithWord:@"Test"];
+    [word printAnagrams];
     
   }
   return 0;

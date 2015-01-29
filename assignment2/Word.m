@@ -20,14 +20,19 @@
 {
   self = [super init];
   if (self) {
-    _word = word;
-    _wordSize = [word length];
+    _wordSize     = [word length];
+    _anagrams     = [NSMutableArray arrayWithObjects:word, nil];
+    _anagramsSize = 1;
   }
   return self;
 }
 
 -(void) printAnagrams
-{}
+{
+  for (NSString * word in _anagrams){
+    NSLog(@"> %@", word);
+  }
+}
 
 @end
 

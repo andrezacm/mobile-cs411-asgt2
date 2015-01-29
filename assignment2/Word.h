@@ -8,10 +8,9 @@
 
 @interface Word : NSObject
 {
-  NSString * _word;
-  NSArray  * _anagrams;
-  NSInteger _wordSize;
-  NSInteger _anagramsSize;
+  NSMutableArray  * _anagrams;
+  NSInteger         _wordSize;
+  NSInteger         _anagramsSize;
 }
 
   -(BOOL) isAnagram:(NSString *)word;
