@@ -11,9 +11,30 @@
 
 @implementation Word
 
--(BOOL) isAnagram:(NSString *)word
+-(BOOL) isAnagram:(NSString *)newWord
 {
-  return false;
+  if ([newWord length] != [_anagrams[0] length]) {
+    return NO;
+  }
+  
+  NSString * newWordLowercase = [newWord lowercaseString];
+  NSString * anagramLowercase = [_anagrams[0] lowercaseString];
+  
+  NSCountedSet * newWordSet = [[NSCountedSet alloc] init];
+  NSCountedSet * anagramSet = [[NSCountedSet alloc] init];
+  
+  for (int i = 0; i < [anagramLowercase length]; i++){
+    [newWordSet addObject:@([newWordLowercase characterAtIndex:i])];
+    [anagramSet addObject:@([anagramLowercase characterAtIndex:i])];
+  }
+  
+  if ([newWordSet isEqual:anagramSet]) {
+    [_anagrams addObject:newWord];
+    self._anagramsSize++;
+    return YES;
+  }
+  
+  return NO;
 }
 
 -(id) initWithWord:(NSString *)word
@@ -22,7 +43,7 @@
   if (self) {
     _wordSize     = [word length];
     _anagrams     = [NSMutableArray arrayWithObjects:word, nil];
-    _anagramsSize = 1;
+    self._anagramsSize = 1;
   }
   return self;
 }
@@ -33,6 +54,11 @@
     NSLog(@"> %@", word);
   }
 }
+
+//-(NSInteger)anagramsSize
+//{
+//  return _anagramsSize;
+//}
 
 @end
 

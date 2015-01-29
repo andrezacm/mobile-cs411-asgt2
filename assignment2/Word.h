@@ -8,13 +8,14 @@
 
 @interface Word : NSObject
 {
-  NSMutableArray  * _anagrams;
-  NSInteger         _wordSize;
-  NSInteger         _anagramsSize;
+  NSMutableArray * _anagrams;
+  NSInteger        _wordSize;
 }
+  @property NSInteger _anagramsSize;
 
-  -(BOOL) isAnagram:(NSString *)word;
-  -(id)   initWithWord:(NSString *)word;
-  -(void) printAnagrams;
+  -(BOOL)      isAnagram:(NSString *)word;
+  -(id)        initWithWord:(NSString *)word;
+  -(void)      printAnagrams;
+  //-(NSInteger) anagramsSize;
 
 @end
