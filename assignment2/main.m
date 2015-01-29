@@ -9,9 +9,20 @@
 #import <Foundation/Foundation.h>
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+  @autoreleasepool {
+
+    //NSString* file = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"strings"];
+    NSString * file = @"/Users/andreza/workspace/mobile-cs411/mobile-cs411-asgt2/assignment2/words2";
+    NSError  * error;
+    NSString *fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
+    
+    NSLog(@"Reading error  %@", error);
+    
+    for (NSString *line in [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]) {
+      NSLog(line);
     }
-    return 0;
+    
+  }
+  return 0;
 }
+
