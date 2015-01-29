@@ -55,6 +55,12 @@
   }
 }
 
+-(void) addAnagrams:(NSString *)word
+{
+  [_anagrams addObject:word];
+  self._anagramsSize++;
+}
+
 //-(NSInteger)anagramsSize
 //{
 //  return _anagramsSize;

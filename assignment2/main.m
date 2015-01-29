@@ -9,6 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "Word.h"
 
+NSInteger inSort(id obj1, id obj2, void * context)
+{
+  if ([obj1 count] > [obj2 count]) {
+    return NSOrderedAscending;
+  } else if ([obj1 count] < [obj2 count]){
+    return NSOrderedDescending;
+  } else {
+    return NSOrderedSame;
+  }
+}
+
+
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
@@ -19,38 +31,39 @@ int main(int argc, const char * argv[]) {
     
     if (error) { NSLog(@"Reading error %@", error); }
     
-    NSMutableArray * words = [[NSMutableArray alloc] init];
+    //NSMutableArray * words = [[NSMutableArray alloc] init];
+    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
     
     for (NSString *line in [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]) {
+     
+      NSString * newWordLowercase = [line lowercaseString];
       
-      if ([words count] == 0) {
-        [words addObject:[[Word alloc] initWithWord:line]];
+      NSMutableArray *letterArray = [NSMutableArray array];
+      
+      [newWordLowercase enumerateSubstringsInRange:NSMakeRange(0, [newWordLowercase length])
+                                  options:(NSStringEnumerationByComposedCharacterSequences)
+                               usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                                 [letterArray addObject:substring];
+                               }];
+      
+      NSCountedSet * newWordSet   = [[NSCountedSet alloc] initWithArray:letterArray];
+      
+//      for (int i = 0; i < [newWordLowercase length]; i++){
+//        [newWordSet addObject:@([newWordLowercase characterAtIndex:i])];
+//      }
+      
+      if (dictionary[newWordSet]){
+        [dictionary[newWordSet] addObject:line];
       } else {
-        BOOL isAnagram = NO;
-        
-        
-        for (id word in words){
-          if([word isAnagram:line]){ isAnagram = YES; break;}
-        }
-        if (!isAnagram) { [words addObject:[[Word alloc] initWithWord:line]]; }
+        NSMutableArray * anagrams = [[NSMutableArray alloc] initWithObjects:line, nil];
+        [dictionary setObject:anagrams forKey:newWordSet];
       }
     }
     
-    NSInteger index = 0;
-    NSInteger index2 = 0;
-    NSInteger max   = 0;
+    NSArray * sortedAnagrams;
+    sortedAnagrams = [[dictionary allValues] sortedArrayUsingFunction:inSort context:NULL];
     
-    for (Word * word in words) {
-      if (word._anagramsSize > max) {
-        max = word._anagramsSize;
-        index = index2;
-      }
-      index2++;
-    }
-    
-    NSLog(@"> %lu", max);
-    
-    [words[index] printAnagrams];
+    NSLog([sortedAnagrams description]);
 
   }
   return 0;

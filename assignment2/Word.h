@@ -15,6 +15,7 @@
 
   -(BOOL)      isAnagram:(NSString *)word;
   -(id)        initWithWord:(NSString *)word;
+  -(void)      addAnagrams:(NSString *)word;
   -(void)      printAnagrams;
   //-(NSInteger) anagramsSize;
 
