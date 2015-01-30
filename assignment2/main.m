@@ -8,78 +8,48 @@
 
 #import <Foundation/Foundation.h>
 #import "Anagram.h"
+#import "NSString+CodeWordExtension.h"
+
+NSInteger sortAnagrams (Anagram * a1, Anagram * a2){
+  return [a1 count] - [a2 count];
+}
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
-    
-    /*
     NSDate * beginTime = [NSDate date];
     
-    //NSString* file = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"strings"];
     NSString * file = @"/Users/andreza/workspace/mobile-cs411/mobile-cs411-asgt2/assignment2/words";
     NSError  * error;
-    NSString *fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
+    NSString * fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
     
     if (error) { NSLog(@"Reading error %@", error); }
     
-     NSArray * words = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-
-//    NSArray * sortedWords;
-//    sortedWords = [words sortedArrayUsingFunction:sortWordsByLength context:NULL];
-//    NSLog([sortedWords description]);
+    NSMutableDictionary * anagramsDictionary = [[NSMutableDictionary alloc] init];
     
-    
-    for (NSString *line in words) {
-     
+    for (NSString *line in [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]) {
+      
       NSString * newWordLowercase = [line lowercaseString];
+      NSString * codedNWLowercase = [newWordLowercase codeWord];
       
-      //NSLog([sortedletter description]);
-      
-//      [newWordLowercase enumerateSubstringsInRange:NSMakeRange(0, [newWordLowercase length])
-//                                  options:(NSStringEnumerationByComposedCharacterSequences)
-//                               usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-//                                 [letterArray addObject:substring];
-//                               }];
-//      
-      NSCountedSet * newWordSet   = [[NSCountedSet alloc] init];
-      
-      for (int i = 0; i < [newWordLowercase length]; i++){
-        [newWordSet addObject:@([newWordLowercase characterAtIndex:i])];
-      }
-      
-      NSInteger index = -1;
-      
-      if ([words2 containsObject:newWordSet]){
-        index = [words2 indexOfObject:newWordSet];
-      }
-      
-      if (index > -1) {
-        [words3[index] addObject:line];
+      if (anagramsDictionary[codedNWLowercase]){
+        Anagram * anagram = [anagramsDictionary valueForKey:codedNWLowercase];
+        [anagram addWord:line];
       } else {
-        [words2 addObject:newWordSet];
-        [words3 addObject:[[NSMutableArray alloc] initWithObjects:line, nil]];
+        Anagram * anagram = [[Anagram alloc] initWithWord:line];
+        [anagramsDictionary setObject:anagram forKey:codedNWLowercase];
       }
-      
-      //[words2 addObject:newWordSet];
-      
-//      if (dictionary[newWordSet]){
-//        [dictionary[newWordSet] addObject:line];
-//      } else {
-//        NSMutableArray * anagrams = [[NSMutableArray alloc] initWithObjects:line, nil];
-//        [dictionary setObject:anagrams forKey:newWordSet];
-//      }
     }
     
-    NSLog([words3 description]);
+    NSArray * sortedAnagrams;
+    sortedAnagrams = [[anagramsDictionary allValues] sortedArrayUsingFunction:sortAnagrams context:NULL];
+    NSInteger countSortedAnagrams = [sortedAnagrams count];
     
-//    NSArray * sortedAnagrams;
-//    sortedAnagrams = [[dictionary allValues] sortedArrayUsingFunction:inSort context:NULL];
-//    
-//    NSLog([sortedAnagrams description]);
+    
+    NSLog([[sortedAnagrams[countSortedAnagrams -1] words] description]);
     
     NSLog(@"%f", [beginTime timeIntervalSinceNow]);
-     */
+    
   }
   return 0;
 }

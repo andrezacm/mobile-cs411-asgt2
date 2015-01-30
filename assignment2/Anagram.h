@@ -13,7 +13,7 @@
 }
 
   -(id)        initWithWord:(NSString *)aWord;
-  -(BOOL)      addWord:(NSString *)aWord;
+  -(void)      addWord:(NSString *)aWord;
   -(int)       count;
   -(NSArray *) words;
 

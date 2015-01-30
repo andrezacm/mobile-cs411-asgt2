@@ -14,21 +14,24 @@
 
 -(id)initWithWord:(NSString *)aWord
 {
-  //TODO
+  words = [[NSMutableArray alloc] init];
+  [words addObject:aWord];
+  wordCoded = [aWord codeWord];
   return self;
 }
 
--(BOOL)addWord:(NSString *)aWord
+-(void)addWord:(NSString *)aWord
 {
-  BOOL rtn = NO;
-  NSString * cw = [aWord codeWord];
-  
-  if ([cw compare:wordCoded]) {
-    [words addObject:aWord];
-    rtn = YES;
-  }
-  
-  return rtn;
+//  BOOL rtn = NO;
+//  NSString * cw = [aWord codeWord];
+//  
+//  if ([cw compare:wordCoded]) {
+//    [words addObject:aWord];
+//    rtn = YES;
+//  }
+//  
+//  return rtn;
+  [words addObject:aWord];
 }
 
 -(int)count
