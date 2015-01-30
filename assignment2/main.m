@@ -7,33 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Word.h"
-
-NSInteger inSort(id obj1, id obj2, void * context)
-{
-  if ([obj1 count] > [obj2 count]) {
-    return NSOrderedAscending;
-  } else if ([obj1 count] < [obj2 count]){
-    return NSOrderedDescending;
-  } else {
-    return NSOrderedSame;
-  }
-}
-
-NSInteger sortWordsByLength(id obj1, id obj2, void * context)
-{
-  if ([obj1 length] > [obj2 length]) {
-    return NSOrderedAscending;
-  } else if ([obj1 length] < [obj2 length]){
-    return NSOrderedDescending;
-  } else {
-    return NSOrderedSame;
-  }
-}
+#import "Anagram.h"
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
+    
+    /*
     NSDate * beginTime = [NSDate date];
     
     //NSString* file = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"strings"];
@@ -42,19 +22,13 @@ int main(int argc, const char * argv[]) {
     NSString *fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
     
     if (error) { NSLog(@"Reading error %@", error); }
-//    
+    
      NSArray * words = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-//    
+
 //    NSArray * sortedWords;
 //    sortedWords = [words sortedArrayUsingFunction:sortWordsByLength context:NULL];
-//    
-//    
-//    
 //    NSLog([sortedWords description]);
     
-    NSMutableArray * words2 = [[NSMutableArray alloc] init];
-    NSMutableArray * words3 = [[NSMutableArray alloc] init];
-    //NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] initWithCapacity:[words count]];
     
     for (NSString *line in words) {
      
@@ -105,7 +79,7 @@ int main(int argc, const char * argv[]) {
 //    NSLog([sortedAnagrams description]);
     
     NSLog(@"%f", [beginTime timeIntervalSinceNow]);
-
+     */
   }
   return 0;
 }

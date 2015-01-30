@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570730921A7B678700A3B229 /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 570730911A7B678700A3B229 /* Anagram.m */; };
+		570730951A7B695E00A3B229 /* NSString+CodeWordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 570730941A7B695E00A3B229 /* NSString+CodeWordExtension.m */; };
 		57246C731A78B1A900EAF9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57246C721A78B1A900EAF9CA /* main.m */; };
-		57F78A271A79BF5D0072B3AB /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F78A261A79BF5D0072B3AB /* Word.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		570730901A7B66B400A3B229 /* Anagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagram.h; sourceTree = "<group>"; };
+		570730911A7B678700A3B229 /* Anagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anagram.m; sourceTree = "<group>"; };
+		570730931A7B68D100A3B229 /* NSString+CodeWordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CodeWordExtension.h"; sourceTree = "<group>"; };
+		570730941A7B695E00A3B229 /* NSString+CodeWordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CodeWordExtension.m"; sourceTree = "<group>"; };
 		57246C6F1A78B1A900EAF9CA /* assignment2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment2; sourceTree = BUILT_PRODUCTS_DIR; };
 		57246C721A78B1A900EAF9CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		57F78A251A79BF460072B3AB /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		57F78A261A79BF5D0072B3AB /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				57246C721A78B1A900EAF9CA /* main.m */,
-				57F78A251A79BF460072B3AB /* Word.h */,
-				57F78A261A79BF5D0072B3AB /* Word.m */,
+				570730901A7B66B400A3B229 /* Anagram.h */,
+				570730911A7B678700A3B229 /* Anagram.m */,
+				570730931A7B68D100A3B229 /* NSString+CodeWordExtension.h */,
+				570730941A7B695E00A3B229 /* NSString+CodeWordExtension.m */,
 			);
 			path = assignment2;
 			sourceTree = "<group>";
@@ -123,8 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570730921A7B678700A3B229 /* Anagram.m in Sources */,
 				57246C731A78B1A900EAF9CA /* main.m in Sources */,
-				57F78A271A79BF5D0072B3AB /* Word.m in Sources */,
+				570730951A7B695E00A3B229 /* NSString+CodeWordExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
