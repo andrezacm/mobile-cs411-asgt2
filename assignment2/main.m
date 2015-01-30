@@ -20,50 +20,91 @@ NSInteger inSort(id obj1, id obj2, void * context)
   }
 }
 
+NSInteger sortWordsByLength(id obj1, id obj2, void * context)
+{
+  if ([obj1 length] > [obj2 length]) {
+    return NSOrderedAscending;
+  } else if ([obj1 length] < [obj2 length]){
+    return NSOrderedDescending;
+  } else {
+    return NSOrderedSame;
+  }
+}
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
+    NSDate * beginTime = [NSDate date];
+    
     //NSString* file = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"strings"];
-    NSString * file = @"/Users/andreza/workspace/mobile-cs411/mobile-cs411-asgt2/assignment2/words2";
+    NSString * file = @"/Users/andreza/workspace/mobile-cs411/mobile-cs411-asgt2/assignment2/words";
     NSError  * error;
     NSString *fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
     
     if (error) { NSLog(@"Reading error %@", error); }
+//    
+     NSArray * words = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+//    
+//    NSArray * sortedWords;
+//    sortedWords = [words sortedArrayUsingFunction:sortWordsByLength context:NULL];
+//    
+//    
+//    
+//    NSLog([sortedWords description]);
     
-    //NSMutableArray * words = [[NSMutableArray alloc] init];
-    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+    NSMutableArray * words2 = [[NSMutableArray alloc] init];
+    NSMutableArray * words3 = [[NSMutableArray alloc] init];
+    //NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] initWithCapacity:[words count]];
     
-    for (NSString *line in [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]) {
+    for (NSString *line in words) {
      
       NSString * newWordLowercase = [line lowercaseString];
       
-      NSMutableArray *letterArray = [NSMutableArray array];
+      //NSLog([sortedletter description]);
       
-      [newWordLowercase enumerateSubstringsInRange:NSMakeRange(0, [newWordLowercase length])
-                                  options:(NSStringEnumerationByComposedCharacterSequences)
-                               usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-                                 [letterArray addObject:substring];
-                               }];
+//      [newWordLowercase enumerateSubstringsInRange:NSMakeRange(0, [newWordLowercase length])
+//                                  options:(NSStringEnumerationByComposedCharacterSequences)
+//                               usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+//                                 [letterArray addObject:substring];
+//                               }];
+//      
+      NSCountedSet * newWordSet   = [[NSCountedSet alloc] init];
       
-      NSCountedSet * newWordSet   = [[NSCountedSet alloc] initWithArray:letterArray];
-      
-//      for (int i = 0; i < [newWordLowercase length]; i++){
-//        [newWordSet addObject:@([newWordLowercase characterAtIndex:i])];
-//      }
-      
-      if (dictionary[newWordSet]){
-        [dictionary[newWordSet] addObject:line];
-      } else {
-        NSMutableArray * anagrams = [[NSMutableArray alloc] initWithObjects:line, nil];
-        [dictionary setObject:anagrams forKey:newWordSet];
+      for (int i = 0; i < [newWordLowercase length]; i++){
+        [newWordSet addObject:@([newWordLowercase characterAtIndex:i])];
       }
+      
+      NSInteger index = -1;
+      
+      if ([words2 containsObject:newWordSet]){
+        index = [words2 indexOfObject:newWordSet];
+      }
+      
+      if (index > -1) {
+        [words3[index] addObject:line];
+      } else {
+        [words2 addObject:newWordSet];
+        [words3 addObject:[[NSMutableArray alloc] initWithObjects:line, nil]];
+      }
+      
+      //[words2 addObject:newWordSet];
+      
+//      if (dictionary[newWordSet]){
+//        [dictionary[newWordSet] addObject:line];
+//      } else {
+//        NSMutableArray * anagrams = [[NSMutableArray alloc] initWithObjects:line, nil];
+//        [dictionary setObject:anagrams forKey:newWordSet];
+//      }
     }
     
-    NSArray * sortedAnagrams;
-    sortedAnagrams = [[dictionary allValues] sortedArrayUsingFunction:inSort context:NULL];
+    NSLog([words3 description]);
     
-    NSLog([sortedAnagrams description]);
+//    NSArray * sortedAnagrams;
+//    sortedAnagrams = [[dictionary allValues] sortedArrayUsingFunction:inSort context:NULL];
+//    
+//    NSLog([sortedAnagrams description]);
+    
+    NSLog(@"%f", [beginTime timeIntervalSinceNow]);
 
   }
   return 0;
