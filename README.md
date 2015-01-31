@@ -1,4 +1,5 @@
 # mobile-cs411-asgt2
+This project is the first assignment of mobile cs411 class.
 
 ##Description
 
@@ -18,7 +19,7 @@ How it works:
   * Main class contain:
     Main function
 
-The main function open and read the words file, then interact into the file word per word. The program check the word code and insert it into a dictionary wich contain key = code word and value = Anagram object. If the code word is not present in the dictionary, then the program star an Anagram object from that word and insert it into the value of the dictionary with the key as the word code. After complete all the list of words, the program sort the dictionary by the size of Anagrams and show the largest list of anagrams.
+The main function open and read the words file, then interact into the file word per word. The program check the word code and insert it into a dictionary wich contain key = code word and value = Anagram object. If the code word is not present in the dictionary, then the program start an Anagram object from that word and insert it into the value of the dictionary with the key as the word code. After complete all the list of words, the program sort the dictionary by the size of Anagrams and show the largest list of anagrams.
 
 ##To Run
 
