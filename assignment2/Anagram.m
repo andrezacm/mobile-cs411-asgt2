@@ -22,19 +22,10 @@
 
 -(void)addWord:(NSString *)aWord
 {
-//  BOOL rtn = NO;
-//  NSString * cw = [aWord codeWord];
-//  
-//  if ([cw compare:wordCoded]) {
-//    [words addObject:aWord];
-//    rtn = YES;
-//  }
-//  
-//  return rtn;
   [words addObject:aWord];
 }
 
--(int)count
+-(int) countWords
 {
   return (int)[words count];
 }

@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Anagram.h"
 #import "NSString+CodeWordExtension.h"
+#include <objc/runtime.h>
 
-NSInteger sortAnagrams (Anagram * a1, Anagram * a2){
-  return [a1 count] - [a2 count];
+NSInteger sortAnagrams (id a1, id a2){
+  return [a1 countWords] - [a2 countWords];
 }
 
 int main(int argc, const char * argv[]) {
@@ -41,10 +42,10 @@ int main(int argc, const char * argv[]) {
       }
     }
     
-    NSArray * sortedAnagrams;
+    NSArray * sortedAnagrams = [[NSArray alloc] initWithArray:[anagramsDictionary allValues]];
     sortedAnagrams = [[anagramsDictionary allValues] sortedArrayUsingFunction:sortAnagrams context:NULL];
-    NSInteger countSortedAnagrams = [sortedAnagrams count];
     
+    NSInteger countSortedAnagrams = [sortedAnagrams count];
     
     NSLog([[sortedAnagrams[countSortedAnagrams -1] words] description]);
     
